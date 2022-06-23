@@ -12,7 +12,7 @@ class StrengthForm extends StatefulWidget {
 }
 
 class StrengthFormState extends State<StrengthForm>{
-  late int upperInt;
+  late int upperInt = 0;
   late int coreInt;
   late int lowerInt;
   late String upper;
@@ -21,31 +21,12 @@ class StrengthFormState extends State<StrengthForm>{
 
 
   final _formKey = GlobalKey<FormState>();
-
-  Widget _buildUpperField(){
-    return TextFormField(
-      keyboardType: TextInputType.numberWithOptions(),
-      decoration: InputDecoration(
-        labelText: "Upper Weight"
-      ),
-      validator: (value){
-        if(value!.isEmpty){
-          return "Weight is required";
-        }
-        upperInt = int.parse(value); //Converting String to Int
-        if(upperInt < 0 || upperInt > 350){ //Weight constraints
-          return "Please enter a weight between 0-350";
-        }
-      },
-      onSaved: (value){
-        upper = value!;
-      },
-    );
-  }
+  
   Widget _buildCoreField(){
     return Column(
       children: [
         TextFormField(
+          key: _formKey,
           keyboardType: TextInputType.numberWithOptions(),
           decoration: InputDecoration(
               labelText: "Upper Weight"
@@ -59,49 +40,22 @@ class StrengthFormState extends State<StrengthForm>{
               return "Please enter a weight between 0-350";
             }
           },
-          onChanged: (val){
-            setState((){
-              upper = val;
-            });
-          },
+
         ),
+        Container(
+          child: ElevatedButton(
+            onPressed: (){
+              if(_formKey.currentState!.validate()){
+                return;
+              }
+            },
+            child: Text("Button"),
+          ),
+        )
       ],
     );
   }
-  Widget _buildLowerField(){
-
-    return Container(
-      padding: EdgeInsets.only(top: 300),
-      child: Column(
-        children: [
-          TextFormField(
-            keyboardType: TextInputType.numberWithOptions(),
-            decoration: InputDecoration(
-                labelText: "lower Weight"
-            ),
-            validator: (value){
-              if(value!.isEmpty){
-                return "Weight is required";
-              }
-              lowerInt = int.parse(value);
-              if(lowerInt < 0 || lowerInt > 350){ //weight constraints
-                return "Please enter a weight between 0-350";
-              }
-            },
-            onChanged: (val){
-              setState((){
-                lower = val;
-              });
-            },
-          ),
-        ],
-      )
-
-    );
-  }
-  Widget _buildUpperBubble(){
-    return Text("data");
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -169,5 +123,11 @@ class StrengthFormState extends State<StrengthForm>{
 
   }
 
+}
+
+mixin InputValidationMixin{
+  bool isWeigthValid(String weight){
+
+  }
 }
 
