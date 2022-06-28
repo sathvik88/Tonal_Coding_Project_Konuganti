@@ -1,3 +1,5 @@
+//Tonal Porject By Sathvik Konuganti
+//Date: 06/28/2022
 import 'dart:core';
 import 'dart:ffi';
 import 'package:flutter/material.dart';
@@ -21,7 +23,7 @@ class StrengthFormState extends State<StrengthForm>{
   final _formKey = GlobalKey<FormState>();
   final _labelKey = GlobalKey<FormState>();
 
-  void onTap(){
+  void onTap(){ //Validation for both inputs
     if(_formKey.currentState!.validate()){
       setState((){
         _weight = _weightController.text;
@@ -38,8 +40,6 @@ class StrengthFormState extends State<StrengthForm>{
     }
 
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +67,7 @@ class StrengthFormState extends State<StrengthForm>{
             Container(
               padding: EdgeInsets.fromLTRB(80, 70, 80, 400),
               alignment: Alignment.topCenter,
-              child: AutoSizeText(
+              child: AutoSizeText( //Automatically resize text 
                 _weight,
                 style: weightTextStyle,
 
@@ -89,7 +89,7 @@ class StrengthFormState extends State<StrengthForm>{
             ),
             GestureDetector(
               onTap: (){
-                FocusManager.instance.primaryFocus?.unfocus();
+                FocusManager.instance.primaryFocus?.unfocus(); //Allows the keyboard to go down after typing.
               },
               child: SingleChildScrollView(
 
@@ -121,7 +121,7 @@ class StrengthFormState extends State<StrengthForm>{
               onTap: (){
                 FocusManager.instance.primaryFocus?.unfocus();
               },
-              child: Container(
+              child: Container( //This container holds the label of the Strength widget.
                 padding: EdgeInsets.only(top:450),
                 child: Form(
                   key: _labelKey,
