@@ -122,7 +122,7 @@ class StrengthFormState extends State<StrengthForm>{
                 FocusManager.instance.primaryFocus?.unfocus();
               },
               child: Container( //This container holds the label of the Strength widget.
-                padding: EdgeInsets.only(top:450),
+                padding: EdgeInsets.only(top:470),
                 child: Form(
                   key: _labelKey,
                   child: TextFormField(
