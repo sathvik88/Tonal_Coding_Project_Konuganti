@@ -67,7 +67,7 @@ class StrengthFormState extends State<StrengthForm>{
             Container(
               padding: EdgeInsets.fromLTRB(80, 70, 80, 400),
               alignment: Alignment.topCenter,
-              child: AutoSizeText( //Automatically resize text 
+              child: AutoSizeText( //Automatically resize text
                 _weight,
                 style: weightTextStyle,
 
@@ -143,7 +143,7 @@ class StrengthFormState extends State<StrengthForm>{
                 padding: EdgeInsets.only(top:500),
               child: ElevatedButton(
                 onPressed: onTap,
-                child: Text("Button")
+                child: Text("Submit")
               ),
 
             )
